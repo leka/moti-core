@@ -1,4 +1,4 @@
-balle-core-implementation
+balle
 =========================
 
-The implementation of the core on Ball.e
+The balle cpp project
