@@ -4,3 +4,4 @@
 /lib
 /tmp
 *~
+.DS_Store
