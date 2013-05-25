@@ -1,5 +1,5 @@
-#ifndef __INT2_H_
-#define __INT2_H_
+#ifndef __COMMON_INT2_H_
+#define __COMMON_INT2_H_
 
 namespace common {
 
@@ -18,4 +18,4 @@ namespace common {
 
 }
 
-#endif // __INT2_H_
+#endif // __COMMON_INT2_H_

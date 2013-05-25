@@ -21,9 +21,10 @@ int main(int argc, char * argv[]) {
 	for (int i = 0; i < nbDevices; i++) {
 		libusb_device_descriptor descriptor;
 		libusb_get_device_descriptor(devices[i], &descriptor);
-		std::cout << "--- Device : " << i << std::cout;
+		std::cout << "--- Device : " << i << std::endl;
 		std::cout << descriptor.idVendor << std::endl;
 		std::cout << descriptor.idProduct << std::endl;
+		std::cout << descriptor. << std::endl;
 
 	}
 
