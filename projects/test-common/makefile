@@ -62,18 +62,22 @@ all: $(ERROR) $(PROJECT_NAME)
 
 # Compile each .ccp into a .o
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.cpp
+	echo $@
 	@mkdir -p $(@D)
 	@$(CC) -o $@ -c $< $(C_FLAGS)
 
 # Linking of the project, depends on the compilation of source files 
 $(PROJECT_NAME): $(OBJ)
 ifeq ($(PROJECT_TYPE), ex)
+	echo "Building executable"
 	@mkdir -p $(WORKSPACE_LOC)/bin/$(PROJECT_NAME)/$(CONFIGURATION)/
 	@$(CC) -o $(WORKSPACE_LOC)/bin/$(PROJECT_NAME)/$(CONFIGURATION)/$@ $^ $(L_FLAGS)
 else ifeq ($(PROJECT_TYPE), sl)
+	echo "Building static library"
 	@rm -f $(LIB_LOC)/$(CONFIGURATION)/lib$(PROJECT_NAME).a
 	@ar crs $(LIB_LOC)/$(CONFIGURATION)/lib$(PROJECT_NAME).a $^
 else ifeq ($(PROJECT_TYPE), dl)
+	echo "Building dynamic library"
 	@rm -f $(LIB_LOC)/$(CONFIGURATION)/lib$(PROJECT_NAME).so
 	@$(CC) -shared -o $(LIB_LOC)/$(CONFIGURATION)/lib$(PROJECT_NAME).so $^ $(L_FLAGS)
 else

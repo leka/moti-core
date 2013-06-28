@@ -5,7 +5,7 @@ using namespace arduinocommunication;
 int main(int argc, char * argv[])
 {
 
-	DeviceDescriptor desc(9025, 1);
+	DeviceDescriptor desc("/dev/ttyACM0");
 
 	Communicator comm(desc);
 	

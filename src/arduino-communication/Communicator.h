@@ -7,15 +7,7 @@
 #include "common/Exception.h"
 
 #include <vector>
-
-// Declaration forward
-struct libusb_context;
-struct libusb_device;
-struct libusb_device_handle;
-
-typedef struct libusb_context        libusb_context;
-typedef struct libusb_device         libusb_device;
-typedef struct libusb_device_handle  libusb_device_handle;
+#include <fstream>
 
 namespace arduinocommunication {
 	
@@ -71,23 +63,17 @@ namespace arduinocommunication {
 		/*!
 		 * The list of the notifiers
 		 */
-		std::vector<IDataNotifier *> _notifiers;	
+		std::vector<IDataNotifier *> _notifierList;	
 		
 		/*!
-		 * The libusb context specific to the class
+		 * The io_service specific to the class
 		 */
-		libusb_context * _context;
+		boost::asio::io_service _ioService;
 		
 		/*!
-		 * The handle of the device
+		 * The serial port
 		 */
-		libusb_device_handle * _handle;
-		
-		/*!
-		 * \fn    checkDevice
-		 * \brief Check if the device match the descriptor
-		 */
-		bool checkDevice(libusb_device * device, const DeviceDescriptor & deviceDescriptor);
+		boost::asio::serial_port _serialPort;
 		
 	};
 	
