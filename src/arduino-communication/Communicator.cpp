@@ -84,9 +84,10 @@ namespace arduinocommunication {
 		boost::array<short, 6> dataBack;
 		size_t byte_read = boost::asio::read(_serialPort, boost::asio::buffer(dataBack));
 
-
-
+		Int3 acc (dataBack[0], dataBack[1], dataBack[2]);
+		Int3 gyro(dataBack[3], dataBack[4], dataBack[5]);
 		
+		notify(acc, gyro);
 	}
 
 	void Communicator::notify(const common::Int3 & acc, const common::Int3 & gyro) {
