@@ -1,10 +1,12 @@
 #ifndef __ARDUINO_COMMUNICATION__COMMUNICATOR__
 #define __ARDUINO_COMMUNICATION__COMMUNICATOR__
 
-#include "IDataNotifier.h"
+#include "IDataListener.h"
 #include "DeviceDescriptor.h"
 
 #include "common/Exception.h"
+
+#include <boost/asio.hpp>
 
 #include <vector>
 #include <fstream>
@@ -39,13 +41,13 @@ namespace arduinocommunication {
 		~Communicator();
 		
 		/*!
-		 * \fn      addNotifier
-		 * \brief   Add a notifier, so the results will be notified to
-		 *          the notifier.
-		 * \remarks The notifier must not be destructed before the destruction
+		 * \fn      addListener
+		 * \brief   Add a listener, so the results will be notified to
+		 *          the listener.
+		 * \remarks The listener must not be destructed before the destruction
 		 *          of this class.
 		 */
-		void addNotifier(IDataNotifier * notifier);
+		void addListener(IDataListener * listener);
 		
 		void getData();
 		
@@ -61,9 +63,9 @@ namespace arduinocommunication {
 		Communicator();
 		
 		/*!
-		 * The list of the notifiers
+		 * The list of the listeners
 		 */
-		std::vector<IDataNotifier *> _notifierList;	
+		std::vector<IDataListener *> _listenerList;	
 		
 		/*!
 		 * The io_service specific to the class
@@ -74,6 +76,12 @@ namespace arduinocommunication {
 		 * The serial port
 		 */
 		boost::asio::serial_port _serialPort;
+
+		/*!
+		 * \fn    notify
+		 * \brief Notify the listeners
+		 */
+		void notify(const common::Int3 & acc, const common::Int3 & gyro);
 		
 	};
 	

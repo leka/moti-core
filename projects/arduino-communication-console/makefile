@@ -30,7 +30,7 @@ HEADERS:=-I$(WORKSPACE_LOC)/src \
 	-L$(WORKSPACE_LOC)/lib/$(CONFIGURATION)
 
 # Used libraries, ex : `pkg-config --libs --cflags libusb-1.0`
-LIBS:=-larduino-communication `pkg-config --libs --cflags libusb-1.0` -lcommon
+LIBS:=-larduino-communication -lboost_system -lcommon
 
 # Compiler options in debug mode
 ifeq ($(CONFIGURATION), debug)

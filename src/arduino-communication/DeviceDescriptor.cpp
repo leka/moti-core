@@ -1,13 +1,15 @@
 #include "DeviceDescriptor.h"
 
+using namespace boost::asio;
+
 namespace arduinocommunication {
 
 	DeviceDescriptor::DeviceDescriptor(const std::string  & deviceName,
-			const unsigned int              & baudRate,
-			const enum flow_control::type   & flowControl,
-			const enum parity::type         & parity,
-			const enum stop_bits::type      & stopBits,
-			const unsigned int              & charSize) :
+			const unsigned int                      & baudRate,
+			const serial_port::flow_control::type   & flowControl,
+			const serial_port::parity::type         & parity,
+			const serial_port::stop_bits::type      & stopBits,
+			const unsigned int                      & charSize) :
 		_deviceName(deviceName),
 		_baudRate(baudRate),
 		_flowControl(flowControl),
@@ -21,22 +23,27 @@ namespace arduinocommunication {
 		return _deviceName;
 	}
 	
-	const unsigned int DeviceDescriptor::getBaudRate() const
+	unsigned int DeviceDescriptor::getBaudRate() const
 	{
 		return _baudRate;
 	}
 	
-	const enum flow_control::type DeviceDescriptor::getFlowControl() const
+	serial_port::flow_control::type DeviceDescriptor::getFlowControl() const
 	{
 		return _flowControl;
 	}
 	
-	const enum parity::type DeviceDescriptor::getParity() const
+	serial_port::parity::type DeviceDescriptor::getParity() const
 	{
 		return _parity;
 	}
+
+	serial_port::stop_bits::type DeviceDescriptor::getStopBits() const
+	{
+		return _stopBits;
+	}
 	
-	const unsigned int DeviceDescriptor::getCharSize() const
+	unsigned int DeviceDescriptor::getCharSize() const
 	{
 		return _charSize;
 	}

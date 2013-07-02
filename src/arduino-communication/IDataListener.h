@@ -1,16 +1,16 @@
-#ifndef __ARDUINO_COMMUNICATION__I_DATA_NOTIFIER__
-#define __ARDUINO_COMMUNICATION__I_DATA_NOTIFIER__
+#ifndef __ARDUINO_COMMUNICATION__I_DATA_LISTENER__
+#define __ARDUINO_COMMUNICATION__I_DATA_LISTENER__
 
 #include "common/Int3.h"
 
 namespace arduinocommunication {
 
 	/*!
-	 * \class IDataNotifier
+	 * \class IDataListener
 	 * \brief This interface must be implemented by class who wants
 	 *        to receive the data from the communication manager.
 	 */
-	class IDataNotifier {
+	class IDataListener {
 	public:
 	
 		/*!
@@ -44,5 +44,5 @@ namespace arduinocommunication {
 
 }
 
-#endif // __ARDUINO_COMMUNICATION__I_DATA_NOTIFIER__
+#endif // __ARDUINO_COMMUNICATION__I_DATA_LISTENER__
 
